@@ -2,6 +2,10 @@ const ApiKey="d35a250666b04544bff1136287988fee";
 const url="https://newsapi.org/v2/everything?q=";
 window.addEventListener("load",()=>getnews("India"));
 
+const Reload=()=>{
+    window.location.reload();
+}
+
 async function getnews(query){
     const res =await fetch(`${url}${query}&apiKey=${ApiKey}`);
     const data= await res.json();
@@ -43,5 +47,6 @@ function navitemselect(id){
 function searchbtn(searchitem){
     let search=document.getElementById(searchitem);
     search=search.value;
+    if(!search) return;
     getnews(search);
 }
